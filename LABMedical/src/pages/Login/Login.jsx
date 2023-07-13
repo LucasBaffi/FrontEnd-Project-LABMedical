@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
-import './Login.css';
-import './Modal.css'
-import MyImg from '../../assets/hospital-logo-design-vector-medical-cross_53876-136743.avif';
+import { useState } from 'react';
+import MyImg from '../../assets/logo-pulso-hospital.png';
 import MySecoundImg from '../../assets/img-labmedical.png';
 import Modal from 'react-modal';
+import './Login.css';
+import './Modal.css'
+
 
 Modal.setAppElement('#root');
+
+
+
 
 function Login() {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function abrirModal() {
+  function openModal() {
     setIsOpen(true);
   }
 
-  function fecharModal() {
+  function closedModal() {
     setIsOpen(false);
   }
 
@@ -23,12 +27,13 @@ function Login() {
       <div className='div-login'>
         <div className='div-form1'>
           <img src={MyImg} className='img-logo' alt="" />
-          <img src={MySecoundImg} alt="Logo-LABMedical" />
+          <img src={MySecoundImg}  alt="Logo-LABMedical" />
         </div>
         <div className='div-form w-100'>
           <div className='div-open-modal'>
-            <h4 className='title'>Não possui conta</h4>
-            <button type="button" className="btn btn-outline-primary" onClick={abrirModal}>Register</button>
+            <h4 className='title'>Don't have an account?</h4>
+           
+            <button type="button" className="btn btn-outline-primary" onClick={openModal}>Register</button>
           </div>
           <div className="row">
             <form>
@@ -45,21 +50,36 @@ function Login() {
           </div>
         </div>
       </div>
+     
 
-      <Modal
+    <div className='div-main-modal'>
+    <Modal
         isOpen={modalIsOpen}
-        onRequestClose={fecharModal}
+        onRequestClose={closedModal}
+        // style={customStyles}
         contentLabel="Modal de exemplo"
         className="custom-modal"
         id='open-modal'
 
       >
-        <form action="">
-          <input></input>
-          <input></input>
+        <div className='div-button-closed-modal'>
+        <button className='button-closed-modal' onClick={closedModal}>x</button>
+    
+        </div>
+        <form action="" className='form-modal'>
+          <h4>Preencha os dados</h4>
+          <label  htmlFor="">Name</label>
+          <input   className="form-control"  aria-label="Username" aria-describedby="basic-addon1"  />
+          <label htmlFor="">Email</label>
+          <input   className="form-control" aria-label="Email" aria-describedby="basic-addon1" type='email'></input>
+          <label htmlFor="">Password</label>
+          <input   className="form-control"  aria-label="Password" aria-describedby="basic-addon1" type='Password'></input>
+           
+          <button className='btn btn-primary button-send'>Send</button>
         </form>
       
       </Modal>
+    </div>
     </>
   )
 }
