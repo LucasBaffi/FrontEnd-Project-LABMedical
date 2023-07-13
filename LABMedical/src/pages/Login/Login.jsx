@@ -74,8 +74,9 @@ function Login() {
           <input   className="form-control" aria-label="Email" aria-describedby="basic-addon1" type='email'></input>
           <label htmlFor="">Password</label>
           <input   className="form-control"  aria-label="Password" aria-describedby="basic-addon1" type='Password'></input>
-           
-          <button className='btn btn-primary button-send'>Send</button>
+          <label htmlFor="">Repit Password</label>
+          <input   className="form-control"  aria-label="Password" aria-describedby="basic-addon1" type='Password'></input>           
+          <button className='btn btn-primary button-send form-control'>Send</button>
         </form>
       
       </Modal>
