@@ -1,25 +1,59 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import MyImg from '../../assets/logo-pulso-hospital.png';
 import MySecoundImg from '../../assets/img-labmedical.png';
-import Modal from 'react-modal';
+import Register from '../Register/Register.jsx';
+import { LoginApi } from '../../Services/web.js';
 import './Login.css';
-import './Modal.css'
-
-
-Modal.setAppElement('#root');
-
+import { LoginContext } from '../../Context/LoginContext.jsx'
 
 
 
 function Login() {
-  const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
+  const { login } = useContext(LoginContext);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
+  const handleRegisterClick = () => {
+    setShowRegisterModal(true);
+  };
+
+  const handleRegisterClose = () => {
+    setShowRegisterModal(false);
   }
 
-  function closedModal() {
-    setIsOpen(false);
+  const inputRefs = useRef({});
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const [errorForm, setErrorForm] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setErrorForm(false)
+  }, [password])
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const response = await LoginApi(email, password)
+    if (!response) {
+      setErrorForm(true)
+      inputRefs.current.email.style.borderColor = 'red'
+      inputRefs.current.password.style.borderColor = 'red'
+      return;
+    }
+
+    login(response)
+    navigate('/home')
   }
 
   return (
@@ -27,21 +61,33 @@ function Login() {
       <div className='div-login'>
         <div className='div-form1'>
           <img src={MyImg} className='img-logo' alt="" />
-          <img src={MySecoundImg}  alt="Logo-LABMedical" />
+          <img src={MySecoundImg} alt="Logo-LABMedical" />
         </div>
         <div className='div-form w-100'>
           <div className='div-open-modal'>
-            <h4 className='title'>Don't have an account?</h4>
-           
-            <button type="button" className="btn btn-outline-primary" onClick={openModal}>Register</button>
+            <h4 className='title'>Dont have an account?</h4>
+
+
+            <button type="button" className="btn btn-outline-primary" onClick={handleRegisterClick} >Register</button>
+            {showRegisterModal && < Register onClose={handleRegisterClose} />}
           </div>
           <div className="row">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h3>Login</h3>
               <label className="formGroupExampleInput">Email</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email}
+                ref={(el) => (inputRefs.current.email = el)}
+                placeholder="Digite seu e-mail"
+                onChange={handleEmailChange} />
+
               <label className="formGroupExampleInput">PassWord</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" />
+              <input type="password" className="form-control" id="exampleInputPassword1" minLength="6"
+                ref={(el) => (inputRefs.current.password = el)}
+                value={password} placeholder="Digite sua senha"
+                onChange={handlePasswordChange} />
+
+              {errorForm && <span style={{ color: 'red' }}>E-mail e/ou senha inválidos</span>}
+
               <button type="submit" className="btn btn-primary w-100 btn-login">Login</button>
             </form>
             <div>
@@ -50,36 +96,8 @@ function Login() {
           </div>
         </div>
       </div>
-     
 
-    <div className='div-main-modal'>
-    <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closedModal}
-        // style={customStyles}
-        contentLabel="Modal de exemplo"
-        className="custom-modal"
-        id='open-modal'
 
-      >
-        <div className='div-button-closed-modal'>
-        <button className='button-closed-modal' onClick={closedModal}>x</button>
-    
-        </div>
-        <form action="" className='form-modal'>
-          <h4>Preencha os dados</h4>
-          <label  htmlFor="">Name</label>
-          <input   className="form-control"  aria-label="Username" aria-describedby="basic-addon1"  />
-          <label htmlFor="">Email</label>
-          <input   className="form-control" aria-label="Email" aria-describedby="basic-addon1" type='email'></input>
-          <label htmlFor="">Password</label>
-          <input   className="form-control"  aria-label="Password" aria-describedby="basic-addon1" type='Password'></input>
-           
-          <button className='btn btn-primary button-send'>Send</button>
-        </form>
-      
-      </Modal>
-    </div>
     </>
   )
 }

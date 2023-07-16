@@ -1,26 +1,36 @@
 import {
-  BrowserRouter as Router, // Apenas renomeando BrowserRouter para Router
+  BrowserRouter as Router,
   Routes,
   Route,
   Navigate
-}from 'react-router-dom'
+} from 'react-router-dom'
 import Login from './pages/Login/Login'
-import Modal from 'react-modal';
-Modal.setAppElement('#root');
+import Home from './pages/Home/Home.jsx';
+// import Register from './pages/Register/Register';
 import './App.css'
+import { useContext } from 'react';
+import { LoginContext } from './Context/LoginContext';
 
 function App() {
-  
+
+  const { loginOn } = useContext(LoginContext)
   
 
+
   return (
-    <>
-       <Router>
-       <Routes>
-       <Route path="/" element= {<Login/>}/>
+    <>    
+        <Router>
+          {loginOn ? <Home/> :  <Navigate to='/' />}
+          {/* {logout && <Login/>} */}
+          <Routes>
+            <Route path="/" exact element={!loginOn ? <Login /> : <Navigate to='/home' />} />
+            <Route path='/' element={<Login />} />
+            <Route path='/home' element={<Home />} />
+            <></>
+            {/* <Route path='/register' element={<Register/>}/> */}
+          </Routes>
+        </Router>
       
-       </Routes>
-       </Router>
     </>
   )
 }
