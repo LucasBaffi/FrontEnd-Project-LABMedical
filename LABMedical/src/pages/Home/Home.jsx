@@ -1,4 +1,4 @@
-import {ToolBar} from "../../Compenents/OutherComponents/ToolBar";
+
 
 
 function Home () {
@@ -6,7 +6,7 @@ function Home () {
     return(
 
         <>
-        <ToolBar/>
+
         </>
     )
 }

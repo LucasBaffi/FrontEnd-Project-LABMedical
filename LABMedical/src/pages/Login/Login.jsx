@@ -13,6 +13,17 @@ function Login() {
 
   const { login } = useContext(LoginContext);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [errorForm, setErrorForm] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const inputRefs = useRef({});
+
+  
+  
+    useEffect(() => {
+      setErrorForm(false)
+    }, [password])
 
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
@@ -22,25 +33,21 @@ function Login() {
     setShowRegisterModal(false);
   }
 
-  const inputRefs = useRef({});
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [errorForm, setErrorForm] = useState(false)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    setErrorForm(false)
-  }, [password])
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
+    resetInputBorderColor('email')
+    resetInputBorderColor('password')
   }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
+    resetInputBorderColor('email')
+    resetInputBorderColor('password')
   }
+
+  const resetInputBorderColor = (inputName) => {
+    inputRefs.current[inputName].style.borderColor = '';
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -51,9 +58,14 @@ function Login() {
       inputRefs.current.password.style.borderColor = 'red'
       return;
     }
-
+   
     login(response)
     navigate('/home')
+  }
+
+  const resetPassword =() =>{
+
+    alert('functionality under construction');
   }
 
   return (
@@ -65,7 +77,7 @@ function Login() {
         </div>
         <div className='div-form w-100'>
           <div className='div-open-modal'>
-            <h4 className='title'>Dont have an account?</h4>
+            <a className='title' >Dont have an account?</a>
 
 
             <button type="button" className="btn btn-outline-primary" onClick={handleRegisterClick} >Register</button>
@@ -75,23 +87,23 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <h3>Login</h3>
               <label className="formGroupExampleInput">Email</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email}
+              <input type="email" className="form-control" id="exampleInputEmail1" 
+              aria-describedby="emailHelp" value={email}
                 ref={(el) => (inputRefs.current.email = el)}
-                placeholder="Digite seu e-mail"
+                placeholder="Type your e-mail"
                 onChange={handleEmailChange} />
 
               <label className="formGroupExampleInput">PassWord</label>
               <input type="password" className="form-control" id="exampleInputPassword1" minLength="6"
                 ref={(el) => (inputRefs.current.password = el)}
-                value={password} placeholder="Digite sua senha"
+                value={password} placeholder="Type your password"
                 onChange={handlePasswordChange} />
 
-              {errorForm && <span style={{ color: 'red' }}>E-mail e/ou senha inválidos</span>}
-
+              {errorForm  && <span style={{color:'red'}} >Incorrect email and/or password</span>}
               <button type="submit" className="btn btn-primary w-100 btn-login">Login</button>
             </form>
             <div>
-              <a className="underlineHover" href="#">Forgot Password?</a>
+              <a className="underlineHover" href="#" onClick={resetPassword}>Forgot Password?</a>
             </div>
           </div>
         </div>

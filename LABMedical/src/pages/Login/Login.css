@@ -49,6 +49,8 @@ form{
 .div-login{
     display: flex;
     gap: 37px;
+    align-items: center;
+    margin-top: 30px;
  
 }
 

@@ -2,14 +2,57 @@
   "usuarios": [
     {
       "id": 1,
+      "name": "lucas",
       "email": "lucas@gmail.com",
       "password": "12345678"
     },
- 
     {
-      "id": 1,
+      "id": 2,
+      "name": "davi",
       "email": "davi@gmail.com",
       "password": "12345678"
+    },
+    {
+      "name": "lucas",
+      "email": "lucas@email.com",
+      "password": "12345678",
+      "id": 3
+    },
+    {
+      "name": "maria ",
+      "email": "maria@gmail.com",
+      "password": "12345678",
+      "id": 4
+    },
+    {
+      "name": "maria",
+      "email": "maria@email.com",
+      "password": "12345678",
+      "id": 5
+    },
+    {
+      "name": "maria",
+      "email": "maria@email.com",
+      "password": "12345678",
+      "id": 6
+    },
+    {
+      "name": "pedro",
+      "email": "email@gmail.com",
+      "password": "12345678",
+      "id": 7
+    },
+    {
+      "name": "mel",
+      "email": "mel@email.com",
+      "password": "12345678",
+      "id": 8
+    },
+    {
+      "name": "maria",
+      "email": "mariaa@gmail.com",
+      "password": "12345678",
+      "id": 9
     }
   ]
 }
