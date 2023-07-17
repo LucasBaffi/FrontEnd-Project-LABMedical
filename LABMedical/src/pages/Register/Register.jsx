@@ -1,7 +1,9 @@
-import { useState}  from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import './Modal.css';
+import { RegisterApi } from '../../Services/web';
+import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
@@ -11,6 +13,8 @@ const Register = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
+
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -28,7 +32,7 @@ const Register = ({ onClose }) => {
     setConfirmPassword(event.target.value);
   };
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault()
     // Validating name, email, and password
     if (name.trim() === '') {
@@ -48,20 +52,18 @@ const Register = ({ onClose }) => {
 
     if (password !== confirmPassword) {
       alert('Passwords do not match.');
-      
+
       return;
     }
 
-    // Saving user in localStorage
-    const user = {
-      name,
-      email,
-      password,
-    };
 
-    localStorage.setItem('user', JSON.stringify(user));
+    const usuario = await RegisterApi(name, email, password);
+    if (!usuario) {
+      alert('Error registering user.');
+    }
+    alert(`Your count registered successfully`)
+    navigate('/login')
 
-    alert('User registered successfully.');
 
     // Clearing form fields
     setName('');
@@ -75,10 +77,10 @@ const Register = ({ onClose }) => {
 
   return (
     <Modal
-     isOpen={true} 
-    //  onRequestClose={onClose} 
-     contentLabel='Modal de exemplo' 
-     className='custom-modal'
+      isOpen={true}
+      onRequestClose={onClose}
+      contentLabel='Modal de exemplo'
+      className='custom-modal'
       id='open-modal'>
 
       <div className='div-button-closed-modal'>
@@ -87,7 +89,7 @@ const Register = ({ onClose }) => {
         </button>
       </div>
       <form className='form-modal'>
-        <h4>Preencha os dados</h4>
+        <h4>Personal data</h4>
         <label htmlFor='name'>Name:</label>
         <input id='name' className='form-control' value={name} onChange={handleNameChange} aria-label='Username' />
 
@@ -97,7 +99,7 @@ const Register = ({ onClose }) => {
         <label htmlFor='password'>Password:</label>
         <input id='password' className='form-control' value={password} onChange={handlePasswordChange} aria-label='Password' type='password' />
 
-        <label htmlFor='confirmPassword'>Repet password:</label>
+        <label htmlFor='confirmPassword'>Password confirmation:</label>
         <input id='confirmPassword' className='form-control' value={confirmPassword} onChange={handleConfirmPasswordChange} aria-label='Confirm Password' type='password' />
 
         <button type='submit' onClick={handleRegister} className='btn btn-primary button-send form-control'>
@@ -111,5 +113,7 @@ const Register = ({ onClose }) => {
 Register.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
+
+
 
 export default Register;
