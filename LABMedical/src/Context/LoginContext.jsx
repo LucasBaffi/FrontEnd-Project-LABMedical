@@ -19,6 +19,7 @@ export const LoginContext = createContext()
         setLoginon(false)
         setUser(null)
         localStorage.removeItem('user')
+        
     }
 
     useEffect(() => {

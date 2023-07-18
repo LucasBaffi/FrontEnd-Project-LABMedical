@@ -10,7 +10,8 @@ import Home from './pages/Home/Home.jsx';
 import './App.css'
 import { useContext } from 'react';
 import { LoginContext } from './Context/LoginContext';
-import ToolBar from './Compenents/OutherComponents/ToolBar';
+
+
 
 function App() {
 
@@ -21,16 +22,15 @@ function App() {
   return (
     <>    
         <Router>
-          {loginOn ? <Home/> :  <Navigate to='/' />}         
-          {loginOn && <ToolBar/>}
-          <Routes>
-            <Route path="/" exact element={!loginOn ? <Login /> : <Navigate to='/home' />} />
-            <Route path='/' element={<Login />} />
-            <Route path='/home' element={<Home />} />
-            <></>
-            {/* <Route path='/register' element={<Register/>}/> */}
-          </Routes>
-        </Router>
+     
+      <Routes>
+        <Route
+          path="/"
+          element={loginOn ? <Navigate to="/home" /> : <Login />}
+        />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
       
     </>
   )
