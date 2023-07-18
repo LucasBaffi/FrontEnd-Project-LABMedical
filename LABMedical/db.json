@@ -53,6 +53,12 @@
       "email": "mariaa@gmail.com",
       "password": "12345678",
       "id": 9
+    },
+    {
+      "name": "lucas",
+      "email": "lucasb@gamil.com",
+      "password": "12345678",
+      "id": 10
     }
   ]
 }
