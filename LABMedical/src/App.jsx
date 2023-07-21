@@ -24,11 +24,12 @@ function App() {
         <Router>
      
       <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route
           path="/"
           element={loginOn ? <Navigate to="/home" /> : <Login />}
         />
-        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
       

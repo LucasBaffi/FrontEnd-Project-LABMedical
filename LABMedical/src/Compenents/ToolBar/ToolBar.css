@@ -10,7 +10,9 @@ header{
 
 .div-name{
    display: flex;
-   gap: 30px;
+   
+
+  
 }
 
 .p-name{
@@ -18,9 +20,30 @@ margin-top: 10px;
 }
 
 .div-container{
-
    display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 18px;
+}
+
+.div-header{ 
+   border-bottom: 1px solid rgba(14, 14, 14, 0.3) ;
+     
+    /* box-shadow: 0 3px  rgba(14, 14, 14, 0.3);
+      transform: scale(1.05); */
+  
+}
+
+.div-icon-sidebar{
+   display: flex;
+    align-items: flex-end;
+}
+
+
+
+@media(min-width: 768px){
+
+   .div-name{
+      gap: 30px;
+   }
 }
 
