@@ -10,19 +10,24 @@ import Home from './pages/Home/Home.jsx';
 import './App.css'
 import { useContext } from 'react';
 import { LoginContext } from './Context/LoginContext';
+import ToolBar from './Compenents/OtherComponents/ToolBar/ToolBar'
+import SideBar from './Compenents/OtherComponents/SideBar/SideBar';
 
 
 
 function App() {
 
   const { loginOn } = useContext(LoginContext)
-  
+
 
 
   return (
-    <>    
-        <Router>
-     
+
+    <Router>
+
+
+
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
@@ -31,10 +36,14 @@ function App() {
           element={loginOn ? <Navigate to="/home" /> : <Login />}
         />
       </Routes>
+
+
     </Router>
-      
-    </>
+
   )
 }
 
 export default App
+
+
+ 

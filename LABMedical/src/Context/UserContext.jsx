@@ -9,6 +9,9 @@ export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
+    const [search, setSearch] = useState('')
+    const [filterItens, setFilterItens] = useState(users)
+
 
     useEffect(() => {
 
@@ -26,17 +29,12 @@ export const UserProvider = ({ children }) => {
         fecthUsers()
     }, []);
 
+   
 
-    const [search, setSearch] = useState('')
-    const [filterItens, setFilterItens] = useState(users)
-
-    function formatNumber(number) {
-        return number ? number.replace(/[()\s-]/g, '') : '';
-      }
     useEffect(() => {
         const result = users.filter((item) =>
           item.name.toLowerCase().includes(search.toLowerCase()) ||
-          formatNumber(item.number).includes(formatNumber(search)) ||
+         item.number.includes(search) ||
           item.email.toLowerCase().includes(search.toLowerCase())
         );
         setFilterItens(result);
