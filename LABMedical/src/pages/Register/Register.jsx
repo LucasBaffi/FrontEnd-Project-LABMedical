@@ -62,7 +62,7 @@ const Register = ({ onClose }) => {
       alert('Error registering user.');
     }
     alert(`Your count registered successfully`)
-    navigate('/login')
+    navigate('/')
 
 
     // Clearing form fields

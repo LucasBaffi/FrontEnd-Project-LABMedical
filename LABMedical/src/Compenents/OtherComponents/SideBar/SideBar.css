@@ -1,0 +1,37 @@
+
+.btn-custom{
+    color: white;       
+    border-radius: 4px;   
+    background-color: transparent;
+    width: 70%;
+    font-size: 8px;
+    height: 40px;
+   
+}
+
+.div-sidebar{
+    background-color: #0b606f;  
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 32%;
+    gap: 20px;
+}
+
+h5{
+    color: white;    
+   
+}
+
+
+
+@media(min-width:768px){
+  .div-sidebar{
+    height: 70%;
+  
+  }
+  .btn-custom{
+    font-size: 16px;;
+  }
+}
