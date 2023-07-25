@@ -23,12 +23,9 @@ function Home() {
     return (
         <>
             <div className=" ">
-                <div className='row'>
-                    <div className='col-3 d-flex align-items-stretch flex-column'>
-                        <SideBar />
-                    </div>
-                    <div className='col-9'>
-                        <ToolBar />
+                
+                    <div >
+                       
                             <h3 className="mt-3">Estatisticas do sistema</h3>
                         <div className="cards-user ">
                             <div className=" div-cards-info d-flex align-items-center justify-content-center gap-3 w-80">
@@ -91,7 +88,8 @@ function Home() {
                     </div>
                 </div>
 
-            </div >
+           
+
         </>
     )
 }
