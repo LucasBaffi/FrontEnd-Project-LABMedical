@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  
+  text-align: center;
+}
+>>>>>>> aa5aabb3a788ce133ecc97062e5e865f1c226313
 
 .logo {
   height: 6em;
