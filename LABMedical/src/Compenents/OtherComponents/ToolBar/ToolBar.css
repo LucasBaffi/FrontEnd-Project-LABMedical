@@ -1,0 +1,26 @@
+.div-name{
+   display: flex;
+   align-items: baseline; 
+  
+}
+
+.p-name{
+margin-top: 13px;
+font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+
+.navbar{
+   background-color:#0b606f; ;
+   border: 1px solid #0b606f;
+}
+
+
+@media(min-width: 768px){
+
+   .div-name{
+      gap: 30px;
+   }
+}
+
