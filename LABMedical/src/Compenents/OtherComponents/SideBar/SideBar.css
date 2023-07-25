@@ -2,18 +2,13 @@
 .btn-custom{
     color: white;       
     border-radius: 4px;   
-<<<<<<< HEAD
+
     background-color: transparent;   
     font-size: 10px;
     width: 80%;
   
   
-=======
-    background-color: transparent;
-    width: 70%;
-    font-size: 8px;
-    height: 40px;
->>>>>>> aa5aabb3a788ce133ecc97062e5e865f1c226313
+
    
 }
 
@@ -23,43 +18,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
+
     gap: 9px;
-=======
-    height: 32%;
-    gap: 20px;
->>>>>>> aa5aabb3a788ce133ecc97062e5e865f1c226313
+
 }
 
 h5{
     color: white;    
    
 }
-<<<<<<< HEAD
+
 .icon-sidebar{
   height: 41px;
     width: 37px;
     margin-top: 20px;
 
 }
-=======
->>>>>>> aa5aabb3a788ce133ecc97062e5e865f1c226313
+
 
 
 
 @media(min-width:768px){
-<<<<<<< HEAD
+
   
   .btn-custom{
-    font-size: 16px;;
-    width: 80%;
-=======
+    font-size: 16px;
+    width: 80%;}
+
   .div-sidebar{
     height: 70%;
   
   }
-  .btn-custom{
-    font-size: 16px;;
->>>>>>> aa5aabb3a788ce133ecc97062e5e865f1c226313
-  }
+
 }
