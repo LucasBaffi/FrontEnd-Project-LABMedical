@@ -33,9 +33,10 @@ function App() {
           {/* ToolBar ocupando col-9 */}
           <div className="col-9">
             {loginOn && <ToolBar />}
-            <div className={`container-fluid ${loginOn ? 'mt-2' : ''}`}>
-              <div className="row">
-                <div className={`col ${loginOn ? 'col-12' : ''}`}>
+
+            <div className={`container-fluid  ${loginOn ? 'mt-5' : ''}`}>
+              <div className="row ">
+                <div className={`col ${loginOn ? 'col-12  div-main-home' : ''}`}>
                   <Routes>
                     <Route
                       path="/"
