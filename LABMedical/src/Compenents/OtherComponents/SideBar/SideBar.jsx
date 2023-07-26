@@ -1,13 +1,21 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 
 function SideBar() {
   const [showSideBar, setShowSideBar] = useState(true);
+  const navigate = useNavigate();
 
   const handleToggleSideBar = () => {
     setShowSideBar(!showSideBar);
   };
+
+  const navRegisterPatient = (event) =>{
+event.preventDefault()
+navigate('/registerPatient');
+
+  }
 
   return (
     <>
@@ -16,7 +24,7 @@ function SideBar() {
           <h5 className='mb-1 mt-5'>Geral</h5>
           <button className="mb-1 btn btn-outline-secondary btn-custom">INICIO</button>
           <h5 className='mb-1 mt-0'>Pacientes</h5>
-          <button className="mb-1 btn btn-outline-secondary btn-custom">CADASTRAR</button>
+          <button className="mb-1 btn btn-outline-secondary btn-custom" onClick={navRegisterPatient}>CADASTRAR</button>
           <button className="mb-1 btn btn-outline-secondary btn-custom">PRONTUARIOS</button>
           <h5 className='mb-1 mt-0'>Exames</h5>
           <button className="mb-1 btn btn-outline-secondary btn-custom">CADASTRAR CONSULTA</button>
