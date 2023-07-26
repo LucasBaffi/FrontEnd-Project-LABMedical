@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home.jsx';
+import RegisterPatient from './pages/RegisterPatient/registerPatient';
 import './App.css';
 import { useContext } from 'react';
 import { LoginContext } from './Context/LoginContext';
@@ -40,6 +41,7 @@ function App() {
                       element={loginOn ? <Navigate to="/home" /> : <Login />}
                     />
                     <Route path="/home" element={<Home />} />
+                    <Route path="/registerPatient" element={<RegisterPatient />} />
                   </Routes>
                 </div>
               </div>
