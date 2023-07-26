@@ -14,6 +14,7 @@ import { useContext } from 'react';
 import { LoginContext } from './Context/LoginContext';
 import ToolBar from './Compenents/OtherComponents/ToolBar/ToolBar';
 import SideBar from './Compenents/OtherComponents/SideBar/SideBar';
+import RecordListing from './pages/recordListing/recordListing';
 
 function App() {
   const { loginOn } = useContext(LoginContext);
@@ -32,7 +33,7 @@ function App() {
           {/* ToolBar ocupando col-9 */}
           <div className="col-9">
             {loginOn && <ToolBar />}
-            <div className={`container-fluid ${loginOn ? 'mt-5' : ''}`}>
+            <div className={`container-fluid ${loginOn ? 'mt-2' : ''}`}>
               <div className="row">
                 <div className={`col ${loginOn ? 'col-12' : ''}`}>
                   <Routes>
@@ -42,6 +43,7 @@ function App() {
                     />
                     <Route path="/home" element={<Home />} />
                     <Route path="/registerPatient" element={<RegisterPatient />} />
+                    <Route path="/recordListing" element={<RecordListing />} />
                   </Routes>
                 </div>
               </div>
