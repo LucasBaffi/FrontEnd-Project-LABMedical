@@ -7,8 +7,6 @@ import { HiUserGroup } from 'react-icons/hi'
 import { LiaBookMedicalSolid } from 'react-icons/lia'
 import { BsFileEarmarkMedicalFill } from 'react-icons/bs'
 import CardInfo from '../../Compenents/HomeComponents/CardIndo/CardInfo';
-import SideBar from '../../Compenents/OtherComponents/SideBar/SideBar';
-import ToolBar from '../../Compenents/OtherComponents/ToolBar/ToolBar';
 import './Home.css'
 
 
