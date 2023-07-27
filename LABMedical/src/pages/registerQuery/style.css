@@ -1,0 +1,15 @@
+.form-query{
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 0 1em rgb(14, 14, 14);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 12px;
+    align-items: center;
+    background-color: #0b606f;
+}

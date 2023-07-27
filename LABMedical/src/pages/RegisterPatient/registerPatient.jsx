@@ -184,7 +184,8 @@ function RegisterPatient() {
         <>
             <h3>Preencha os dados para cadastrar</h3>
             <form className="form-patient mx-auto">
-                <div>
+                <div className='div-button-register '>
+                <h4>Identificação</h4>
 
                     <div className="col-12 d-flex justify-content-end">
                         <button type="button" className="btn btn-primary me-2">
@@ -199,13 +200,13 @@ function RegisterPatient() {
                         
                     </div>
                 </div>
-                <h4>Identificação</h4>
-                <div className="col-md-6">
+               
+                <div className="col-md-8">
                     <label className="form-label">Nome</label>
                     <input type="text" className="form-control" id="inputNome" value={name}
                         onChange={handleNomeChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Gênero</label>
                     <select className="form-select" id="inputGenero" value={genero}
                         onChange={handleGeneroChange}>
@@ -215,22 +216,22 @@ function RegisterPatient() {
                         <option value="nao-binario">Não-Binário</option>
                     </select>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Data de Nascimento</label>
                     <input type="date" className="form-control" id="inputDataNascimento" value={dataNascimento}
                         onChange={handleDataNascimentoChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">CPF</label>
                     <input type="text" className="form-control" id="inputCpf" value={cpf}
                         onChange={handleCpfChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">RG</label>
                     <input type="text" className="form-control" id="inputRg" value={rg}
                         onChange={handleRgChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Estado Civil</label>
                     <select className="form-select" id="inputEstadoCivil" value={estadoCivil}
                         onChange={handleEstadoCivilChange}>
@@ -241,23 +242,23 @@ function RegisterPatient() {
                         <option value="viuvo">Viúvo</option>
                     </select>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Telefone</label>
                     <input type="tel" className="form-control" id="inputTelefone" value={number}
                         onChange={handleTelefoneChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Email</label>
                     <input type="email" className="form-control" id="inputEmail" value={email}
                         onChange={handleEmailChange} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Naturalidade</label>
                     <input type="text" className="form-control" id="inputNaturalidade" value={naturalidade}
                         onChange={handleNaturalidadeChange} />
                 </div>
                 <h4>Convenio</h4>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Convênio</label>
                     <input
                         type="text"
@@ -267,7 +268,7 @@ function RegisterPatient() {
                         onChange={handleConvenioChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Número da Carteira</label>
                     <input
                         type="text"
@@ -277,7 +278,7 @@ function RegisterPatient() {
                         onChange={handleNumeroCarteiraChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Validade</label>
                     <input
                         type="date"
@@ -288,7 +289,7 @@ function RegisterPatient() {
                     />
                 </div>
                 <h4>Dados de endereço</h4>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">CEP</label>
                     <input
                         type="text"
@@ -298,7 +299,7 @@ function RegisterPatient() {
                         onChange={handleCepChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Cidade</label>
                     <input
                         type="text"
@@ -308,7 +309,7 @@ function RegisterPatient() {
                         onChange={handleCidadeChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Estado</label>
                     <input
                         type="text"
@@ -318,7 +319,7 @@ function RegisterPatient() {
                         onChange={handleEstadoChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Logradouro</label>
                     <input
                         type="text"
@@ -328,7 +329,7 @@ function RegisterPatient() {
                         onChange={handleLogradouroChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Número</label>
                     <input
                         type="text"
@@ -338,7 +339,7 @@ function RegisterPatient() {
                         onChange={handleNumeroChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Complemento</label>
                     <input
                         type="text"
@@ -348,7 +349,7 @@ function RegisterPatient() {
                         onChange={handleComplementoChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Bairro</label>
                     <input
                         type="text"
@@ -358,7 +359,7 @@ function RegisterPatient() {
                         onChange={handleBairroChange}
                     />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <label className="form-label">Ponto de Referência</label>
                     <input
                         type="text"
