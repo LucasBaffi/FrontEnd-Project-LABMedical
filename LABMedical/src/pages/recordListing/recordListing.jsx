@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext'
 import { AiOutlineSearch } from 'react-icons/ai';
+import './style.css'
 
 
 function RecordListing() {
@@ -26,7 +27,7 @@ function RecordListing() {
                 </div>
             </div>
 
-            <table className="table">
+            <table className="table form-listing">
 
                 <thead>
                     <tr>

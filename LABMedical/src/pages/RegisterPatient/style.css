@@ -1,3 +1,20 @@
 .form-patient{
-    width: 80%;
+    width: 90%;    
+    padding: 10px;
+    box-shadow: 0 0 1em rgb(14, 14, 14);
+}
+
+
+@media(min-width:768px){
+
+    .div-button-register{
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        
+    }
+    .form-patient{
+        display: flex;
+    align-items: center;
+    }
 }
