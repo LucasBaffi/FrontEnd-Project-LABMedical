@@ -5,7 +5,7 @@ import './style.css'
 
 // form-patient mx-auto
 function RegisterPatient() {
-
+    const [patients, setPatients] = useState([]);
     const [name, setNome] = useState('');
     const [genero, setGenero] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
@@ -27,6 +27,7 @@ function RegisterPatient() {
     const [bairro, setBairro] = useState('');
     const [pontoReferencia, setPontoReferencia] = useState('');  
     const navigate = useNavigate();
+     const [patientCount, setPatientCount] = useState(1);
 
     const handleNomeChange = (event) => {
         setNome(event.target.value);
@@ -191,6 +192,9 @@ function RegisterPatient() {
                         </button>
                         <button type="button" className="btn btn-danger me-2">
                             Deletar
+                        </button>
+                        <button type="submit" className="btn btn-success" onClick={handleRegister}>
+                            Salvar
                         </button>
                         
                     </div>
@@ -364,9 +368,7 @@ function RegisterPatient() {
                         onChange={handlePontoReferenciaChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-success" onClick={handleRegister}>
-                            Salvar
-                        </button>
+                
                 
             </form>
 
