@@ -15,6 +15,7 @@ import { LoginContext } from './Context/LoginContext';
 import ToolBar from './Compenents/OtherComponents/ToolBar/ToolBar';
 import SideBar from './Compenents/OtherComponents/SideBar/SideBar';
 import RecordListing from './pages/recordListing/recordListing';
+import RegisterQuery from './pages/registerQuery/registerQuery';
 
 function App() {
   const { loginOn } = useContext(LoginContext);
@@ -34,7 +35,7 @@ function App() {
           <div className="col-9">
             {loginOn && <ToolBar />}
 
-            <div className={`container-fluid  ${loginOn ? 'mt-5' : ''}`}>
+            <div className={`container-fluid  ${loginOn ? ' ' : ''}`}>
               <div className="row ">
                 <div className={`col ${loginOn ? 'col-12  div-main-home' : ''}`}>
                   <Routes>
@@ -45,6 +46,7 @@ function App() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/registerPatient" element={<RegisterPatient />} />
                     <Route path="/recordListing" element={<RecordListing />} />
+                    <Route path="/registerquery" element={<RegisterQuery />} />
                   </Routes>
                 </div>
               </div>

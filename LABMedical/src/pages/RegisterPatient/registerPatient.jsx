@@ -192,6 +192,9 @@ function RegisterPatient() {
                         <button type="button" className="btn btn-danger me-2">
                             Deletar
                         </button>
+                        <button type="submit" className="btn btn-success" onClick={handleRegister}>
+                            Salvar
+                        </button>
                         
                     </div>
                 </div>
@@ -364,9 +367,7 @@ function RegisterPatient() {
                         onChange={handlePontoReferenciaChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-success" onClick={handleRegister}>
-                            Salvar
-                        </button>
+                
                 
             </form>
 
