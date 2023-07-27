@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import './Modal.css';
 import { RegisterApi } from '../../Services/web';
 import { useNavigate } from 'react-router-dom';
+import './Modal.css';
 
 Modal.setAppElement('#root');
 

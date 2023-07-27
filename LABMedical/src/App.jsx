@@ -34,7 +34,7 @@ function App() {
           <div className="col-9">
             {loginOn && <ToolBar />}
 
-            <div className={`container-fluid  ${loginOn ? 'mt-5' : ''}`}>
+            <div className={`container-fluid  ${loginOn ? '' : ''}`}>
               <div className="row ">
                 <div className={`col ${loginOn ? 'col-12  div-main-home' : ''}`}>
                   <Routes>
