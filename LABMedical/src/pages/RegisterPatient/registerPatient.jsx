@@ -5,7 +5,6 @@ import './style.css'
 
 // form-patient mx-auto
 function RegisterPatient() {
-
     const [name, setNome] = useState('');
     const [genero, setGenero] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
