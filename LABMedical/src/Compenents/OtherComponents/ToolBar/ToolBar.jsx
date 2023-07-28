@@ -7,9 +7,10 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 
 import './ToolBar.css';
-import SideBar from "../SideBar/SideBar";
+
 
 function ToolBar() {
+  
   const { logout, user } = useContext(LoginContext);
 
 

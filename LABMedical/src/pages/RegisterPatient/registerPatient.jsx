@@ -25,9 +25,9 @@ function RegisterPatient() {
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
-    const [pontoReferencia, setPontoReferencia] = useState('');  
+    const [pontoReferencia, setPontoReferencia] = useState('');
     const navigate = useNavigate();
-     const [patientCount, setPatientCount] = useState(1);
+    const [patientCount, setPatientCount] = useState(1);
 
     const handleNomeChange = (event) => {
         setNome(event.target.value);
@@ -109,7 +109,7 @@ function RegisterPatient() {
         setPontoReferencia(event.target.value);
     };
 
-  
+
     const handleRegister = async (event) => {
         event.preventDefault()
 
@@ -176,7 +176,7 @@ function RegisterPatient() {
         setComplemento('');
         setBairro('');
         setPontoReferencia('');
-      
+
 
     }
 
@@ -185,7 +185,7 @@ function RegisterPatient() {
             <h3>Preencha os dados para cadastrar</h3>
             <form className="form-patient mx-auto">
                 <div className='div-button-register '>
-                <h4>Identificação</h4>
+                    <h4>Identificação</h4>
 
                     <div className="col-12 d-flex justify-content-end">
                         <button type="button" className="btn btn-primary me-2">
@@ -197,10 +197,13 @@ function RegisterPatient() {
                         <button type="submit" className="btn btn-success" onClick={handleRegister}>
                             Salvar
                         </button>
-                        
+
                     </div>
                 </div>
-               
+                <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+
                 <div className="col-md-8">
                     <label className="form-label">Nome</label>
                     <input type="text" className="form-control" id="inputNome" value={name}
@@ -369,8 +372,8 @@ function RegisterPatient() {
                         onChange={handlePontoReferenciaChange}
                     />
                 </div>
-                
-                
+
+
             </form>
 
 
