@@ -78,30 +78,7 @@
       "bairro": "campeche",
       "pontoReferencia": "rua da farmacia",
       "id": "bGJlMPn"
-    },
-    
-    {
-      "name": "rafael",
-      "genero": "masculino",
-      "dataNascimento": "2000-05-22",
-      "cpf": "8888888888",
-      "rg": "888888",
-      "estadoCivil": "solteiro",
-      "number": "48984650544",
-      "email": "rafael@gmail.com",
-      "naturalidade": "florianopolis",
-      "convenio": "unimed",
-      "numeroCarteira": "5499652",
-      "validade": "2025-05-05",
-      "cep": "88064-150",
-      "cidade": "Florianópolis",
-      "estado": "SC",
-      "logradouro": "casa",
-      "numero": "248",
-      "complemento": "casa",
-      "bairro": "ribeirao",
-      "pontoReferencia": "rua da farmacia",
-      "id": "vsl0kCn"
     }
+
   ]
 }
