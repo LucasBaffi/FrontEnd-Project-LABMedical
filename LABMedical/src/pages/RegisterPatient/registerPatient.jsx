@@ -5,7 +5,7 @@ import './style.css'
 
 // form-patient mx-auto
 function RegisterPatient() {
-    const [patients, setPatients] = useState([]);
+
     const [name, setNome] = useState('');
     const [genero, setGenero] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
@@ -25,9 +25,10 @@ function RegisterPatient() {
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
-    const [pontoReferencia, setPontoReferencia] = useState('');  
+    const [pontoReferencia, setPontoReferencia] = useState('');
+    const [isLoading, setIsLoanding] = useState(false)
     const navigate = useNavigate();
-     const [patientCount, setPatientCount] = useState(1);
+
 
     const handleNomeChange = (event) => {
         setNome(event.target.value);
@@ -109,9 +110,10 @@ function RegisterPatient() {
         setPontoReferencia(event.target.value);
     };
 
-  
+
     const handleRegister = async (event) => {
         event.preventDefault()
+
 
         if (!name || !genero || !dataNascimento || !cpf || !rg || !estadoCivil || !number || !email || !naturalidade || !convenio || !numeroCarteira || !validade || !cep || !cidade || !estado || !logradouro || !numero || !bairro || !pontoReferencia) {
             alert('Preencha todos os campos obrigatórios!');
@@ -145,8 +147,12 @@ function RegisterPatient() {
             if (!usuario) {
                 alert('Erro ao cadastrar usuário.');
             } else {
+                setIsLoanding(true);
                 alert('Cadastro realizado com sucesso!');
-                navigate('/home');
+                setTimeout(() => {
+                    navigate('/home'); // Navega para a home após 2,5 segundos
+                }, 3000);
+              
             }
         } catch (error) {
             alert('Erro ao cadastrar usuário.');
@@ -176,16 +182,20 @@ function RegisterPatient() {
         setComplemento('');
         setBairro('');
         setPontoReferencia('');
-      
+
 
     }
 
     return (
         <>
+
+
+
+
             <h3>Preencha os dados para cadastrar</h3>
             <form className="form-patient mx-auto">
                 <div className='div-button-register '>
-                <h4>Identificação</h4>
+                    <h4>Identificação</h4>
 
                     <div className="col-12 d-flex justify-content-end">
                         <button type="button" className="btn btn-primary me-2">
@@ -197,10 +207,16 @@ function RegisterPatient() {
                         <button type="submit" className="btn btn-success" onClick={handleRegister}>
                             Salvar
                         </button>
-                        
+
                     </div>
                 </div>
-               
+                {isLoading && (
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                )}
+
+
                 <div className="col-md-8">
                     <label className="form-label">Nome</label>
                     <input type="text" className="form-control" id="inputNome" value={name}
@@ -369,8 +385,8 @@ function RegisterPatient() {
                         onChange={handlePontoReferenciaChange}
                     />
                 </div>
-                
-                
+
+
             </form>
 
 
