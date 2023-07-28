@@ -30,6 +30,7 @@ function RegisterPatient() {
     const navigate = useNavigate();
 
 
+
     const handleNomeChange = (event) => {
         setNome(event.target.value);
     };
@@ -214,8 +215,7 @@ function RegisterPatient() {
                     <div className="spinner-border" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                )}
-
+                )}              
 
                 <div className="col-md-8">
                     <label className="form-label">Nome</label>
