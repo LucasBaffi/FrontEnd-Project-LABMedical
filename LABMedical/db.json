@@ -32,7 +32,6 @@
     }
   ],
   "pacientes": [
-   
     {
       "name": "melissa alcantara",
       "genero": "nao-binario",
@@ -78,7 +77,52 @@
       "bairro": "campeche",
       "pontoReferencia": "rua da farmacia",
       "id": "bGJlMPn"
+    },
+    {
+      "name": "bernardo",
+      "genero": "masculino",
+      "dataNascimento": "2003-02-22",
+      "cpf": "8888888888",
+      "rg": "888888",
+      "estadoCivil": "solteiro",
+      "number": "888888888",
+      "email": "brnardo@gmail.com",
+      "naturalidade": "florianopolis",
+      "convenio": "unimed",
+      "numeroCarteira": "65423485",
+      "validade": "2026-02-22",
+      "cep": "88064-150",
+      "cidade": "Florianópolis",
+      "estado": "SC",
+      "logradouro": "casa",
+      "numero": "248",
+      "complemento": "casa",
+      "bairro": "campeche",
+      "pontoReferencia": "rua da farmacia",
+      "id": "QStJjWY"
+    },
+    {
+      "name": "maria ",
+      "genero": "masculino",
+      "dataNascimento": "2022-02-22",
+      "cpf": "33333333333",
+      "rg": "888888",
+      "estadoCivil": "casado",
+      "number": "555555555",
+      "email": "lucasrenatobaffi@hotmail.com",
+      "naturalidade": "florianopolis",
+      "convenio": "capture saude",
+      "numeroCarteira": "65423485",
+      "validade": "2222-02-02",
+      "cep": "88064-150",
+      "cidade": "Florianópolis",
+      "estado": "Santa Catarina",
+      "logradouro": "casa",
+      "numero": "555",
+      "complemento": "casa",
+      "bairro": "ribeirao",
+      "pontoReferencia": "rua da farmacia",
+      "id": "41EYxJ2"
     }
-
   ]
 }

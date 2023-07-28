@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PostPatient } from '../../Services/web';
 import './style.css'
@@ -27,6 +27,7 @@ function RegisterPatient() {
     const [pontoReferencia, setPontoReferencia] = useState('');
     const [isLoading, setIsLoanding] = useState(false)
     const navigate = useNavigate();
+    
 
 
 
