@@ -1,20 +1,17 @@
 .custom-modal{
-    width: 26%;
-    height: 70%;
+    width: 26%;   
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: solid 1px #dacdcd;
     margin: auto;
-    margin-top: 6%;
+    margin-top: 3%;
     background-color: #ffffff;
     transition: box-shadow 0.3s ease-in-out;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 
 .custom-modal:hover{
-
     box-shadow: 0 0 8px rgba(1, 6, 145, 0.3);
 }
 
@@ -27,19 +24,15 @@
 
 
 .div-main-modal{
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .form-modal{
-       display: flex;
-    flex-direction: column;
-    margin-bottom: 44px;
-    gap: 10px;
- 
- 
+    display: flex;
+    flex-direction: column;  
+    gap: 10px; 
  }
 
 .ReactModal__Overlay {
@@ -56,7 +49,6 @@
 }
 
 
-
 @media (max-width: 768px) {
    .custom-modal{
     display: flex;
@@ -64,23 +56,11 @@
     justify-content: space-between;
     margin: 0 auto;
     margin-top: 20%;
-    width: 60%;
-    height: 63%;
-
-   }
-
-   .form-modal{     
-    margin: auto;
-   
-  
-    
-   }
-
+    width: 60%;  
+   }  
    .button-send{
     margin-top: 10px;
    }
-
-
   }
 
 

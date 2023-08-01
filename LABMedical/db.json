@@ -29,56 +29,73 @@
       "email": "maria@gmail.com",
       "password": "12345678",
       "id": 5
+    },
+    {
+      "name": "davi samuel",
+      "email": "davi@gmail.com",
+      "password": "12345678",
+      "id": 6
     }
   ],
   "pacientes": [
-   
     {
-      "name": "melissa alcantara",
-      "genero": "nao-binario",
-      "dataNascimento": "2023-05-22",
-      "cpf": "64654546588",
-      "rg": "654215",
-      "estadoCivil": "viuvo",
-      "number": "4899858865",
-      "email": "melalcantara@gmail.com",
+      "name": "lucas ",
+      "genero": "masculino",
+      "dataNascimento": "1993-11-07",
+      "cpf": "5456565656",
+      "rg": "556565",
+      "estadoCivil": "solteiro",
+      "number": "555555",
+      "email": "lucas@gmail.com",
       "naturalidade": "florianopolis",
-      "convenio": "capture saude",
+      "convenio": "unimed",
+      "numeroCarteira": "sdasdasd",
+      "validade": "5555-05-05",
+      "cep": "88064153",
+      "cidade": "flori",
+      "estado": "sc",
+      "logradouro": "sdfsad",
+      "numero": "fasdf",
+      "complemento": "asdf",
+      "bairro": "sadf",
+      "pontoReferencia": "afdasd",
+      "id": "aYX2qbU"
+    },
+    {
+      "name": "Maria",
+      "genero": "feminino",
+      "dataNascimento": "2000-05-05",
+      "cpf": "8888888888",
+      "rg": "888888",
+      "estadoCivil": "solteiro",
+      "number": "5555555555",
+      "email": "maria@gmail.com",
+      "naturalidade": "florianopolis",
+      "convenio": "unimed",
       "numeroCarteira": "65423485",
-      "validade": "2026-07-27",
-      "cep": "88064100",
+      "validade": "2026-02-02",
+      "cep": "88064-150",
       "cidade": "Florianópolis",
       "estado": "SC",
       "logradouro": "casa",
       "numero": "248",
       "complemento": "casa",
-      "bairro": "ribeirao",
-      "pontoReferencia": "bar tobias",
-      "id": "NkMgvkm"
-    },
-    {
-      "name": "joao",
-      "genero": "masculino",
-      "dataNascimento": "2000-02-11",
-      "cpf": "33333333333",
-      "rg": "888888",
-      "estadoCivil": "solteiro",
-      "number": "48978888888",
-      "email": "joao@gmail.com",
-      "naturalidade": "brasileiro",
-      "convenio": "unimed",
-      "numeroCarteira": "5499652",
-      "validade": "2024-02-22",
-      "cep": "8852150",
-      "cidade": "florianopolis",
-      "estado": "SC",
-      "logradouro": "casa",
-      "numero": "555",
-      "complemento": "casa",
       "bairro": "campeche",
-      "pontoReferencia": "rua da farmacia",
-      "id": "bGJlMPn"
+      "pontoReferencia": "bar tobias",
+      "id": "v8ts4Ko"
     }
-
+  ],
+  "consultas": [
+    {
+      "pacienteId": "aYX2qbU",
+      "motivoConsulta": "dor de cabeca",
+      "dataConsulta": "2023-08-22",
+      "horaConsulta": "14:30",
+      "problema": "dor de cabeca forte e mal estar",
+      "medicacaoReceitada": "dipirona",
+      "dosagem": "600ml",
+      "precaucoes": "repousar, evitar produtos gelados ",
+      "id": 1
+    }
   ]
 }

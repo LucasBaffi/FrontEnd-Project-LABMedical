@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 
 function SideBar() {
-  const [showSideBar, setShowSideBar] = useState(true);
+
+  const [navbarText, setNavbarText] = useState('Navbar');
   const navigate = useNavigate();
 
   const handleToggleSideBar = () => {
@@ -14,24 +15,27 @@ function SideBar() {
   const navRegisterPatient = (event) => {
     event.preventDefault()
     navigate('/registerPatient');
-
+    setNavbarText('Cadastro de Paciente');
   }
 
   const navHome = (event) => {
     event.preventDefault()
     navigate('/home');
+    setNavbarText('Estatísticas do Sistema');
 
   }
 
   const navProntuario = (event) => {
     event.preventDefault()
     navigate('/recordListing');
+    setNavbarText('Lista de Prontuários');
 
   }
 
   const navConsulta = (event) => {
     event.preventDefault()
     navigate('/registerquery');
+    setNavbarText('Cadastro de Consulta');
 
   }
   
@@ -39,7 +43,7 @@ function SideBar() {
 
   return (
     <>
-      {showSideBar && (
+     
         <div className='div-sidebar'>
           <h5 className='mb-1 mt-5'>Geral</h5>
           <button className="mb-1 btn btn-outline-secondary btn-custom" onClick={navHome}>INICIO</button>
@@ -49,12 +53,12 @@ function SideBar() {
           <h5 className='mb-1 mt-0'>Exames</h5>
           <button className="mb-1 btn btn-outline-secondary btn-custom" onClick={navConsulta}>CADASTRAR CONSULTA</button>
           <button className="mb-1 btn btn-outline-secondary btn-custom">CADASTRAR EXAME</button>
-          <button className="mb-2 btn btn-outline-secondary btn-custom mt-5" onClick={handleToggleSideBar} > Esconder Barra </button>
+          
         </div>
-      )} {!showSideBar && (<div className='div-sidebar-closed'>
-        <button className="mb-2 btn btn-outline-secondary btn-custom mt-3" onClick={handleToggleSideBar} > Mostrar Barra </button>
-      </div>
-      )}
+      
+       
+      
+     
     </>
   );
 }

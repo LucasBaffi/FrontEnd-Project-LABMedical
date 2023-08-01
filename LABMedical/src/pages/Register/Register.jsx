@@ -80,7 +80,7 @@ const Register = ({ onClose }) => {
       isOpen={true}
       onRequestClose={onClose}
       contentLabel='Modal de exemplo'
-      className='custom-modal'
+      className='custom-modal form-modal'
       id='open-modal'>
 
       <div className='div-button-closed-modal'>

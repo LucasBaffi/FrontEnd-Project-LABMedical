@@ -16,6 +16,7 @@ function Login() {
   const [errorForm, setErrorForm] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoading, setIsLoanding] = useState(false)
   const navigate = useNavigate()
   const inputRefs = useRef({});
 
@@ -58,9 +59,11 @@ function Login() {
       inputRefs.current.password.style.borderColor = 'red'
       return;
     }
-   
-    login(response)
-    navigate('/home')
+    setIsLoanding(true);
+    setTimeout(() => {
+      login(response)
+      navigate('/home'); // Navega para a home após 2,5 segundos
+  }, 3000);
   }
 
   const resetPassword =() =>{
@@ -77,15 +80,20 @@ function Login() {
         </div>
         <div className='div-form w-100'>
           <div className='div-open-modal'>
-            <a className='title' >Dont have an account?</a>
+            <a className='title' >Dont have an account?</a>        
 
 
-            <button type="button" className="btn btn-outline-primary" onClick={handleRegisterClick} >Register</button>
+            <button type="button" className="btn btn-outline-primary btn-register" onClick={handleRegisterClick} >Register</button>
             {showRegisterModal && < Register onClose={handleRegisterClose} />}
           </div>
           <div className="row">
             <form onSubmit={handleSubmit}>
               <h3>Login</h3>
+              {isLoading && (
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                )}
               <label className="formGroupExampleInput">Email</label>
               <input type="email" className="form-control" id="exampleInputEmail1" 
               aria-describedby="emailHelp" value={email}
