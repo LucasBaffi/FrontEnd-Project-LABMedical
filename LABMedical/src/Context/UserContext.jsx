@@ -5,9 +5,12 @@ export const URL_API = 'http://localhost:3000';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState('');
-  const [filterItens, setFilterItens] = useState([]);
+
+    const [users, setUsers] = useState([]);
+    const [consultas, setConsultas] = useState([])
+    const [search, setSearch] = useState('')
+    const [filterItens, setFilterItens] = useState(users)
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,22 +26,49 @@ export const UserProvider = ({ children }) => {
     fetchUsers();
   }, []);
 
-  useEffect(() => {
-    const result = users.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase()) ||
-      item.number.includes(search) ||
-      item.email.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilterItens(result);
-  }, [search, users]);
+  
 
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
+    useEffect(() => {
 
-  return (
-    <UserContext.Provider value={{ users, search, handleChange, filterItens }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
+        const fecthConsul = async () => {
+
+            try {
+                const response = await fetch(`${URL_API}/consultas`);
+                const consultas = await response.json();
+                setConsultas(consultas);
+            } catch (error) {
+                console.error('Erro ao buscar os usuários:', error);
+            }
+
+        }
+        fecthConsul()
+    }, []);
+
+
+
+   
+
+    useEffect(() => {
+        const result = users.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()) ||
+         item.number.includes(search) ||
+          item.email.toLowerCase().includes(search.toLowerCase())
+        );
+        setFilterItens(result);
+      }, [search, users]);
+      
+     
+
+    const handleChange = (e) => {
+        setSearch(e.target.value);
+        
+
+    }
+
+    return (
+        <UserContext.Provider value={{ users, search, handleChange, filterItens, consultas }}>
+            {children}
+        </UserContext.Provider>
+    )
+}
+
