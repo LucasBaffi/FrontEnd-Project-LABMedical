@@ -9,6 +9,7 @@ export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
+    const [consultas, setConsultas] = useState([])
     const [search, setSearch] = useState('')
     const [filterItens, setFilterItens] = useState(users)
 
@@ -28,6 +29,24 @@ export const UserProvider = ({ children }) => {
         }
         fecthUsers()
     }, []);
+
+    useEffect(() => {
+
+        const fecthConsul = async () => {
+
+            try {
+                const response = await fetch(`${URL_API}/consultas`);
+                const consultas = await response.json();
+                setConsultas(consultas);
+            } catch (error) {
+                console.error('Erro ao buscar os usuários:', error);
+            }
+
+        }
+        fecthConsul()
+    }, []);
+
+
 
    
 
@@ -49,7 +68,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ users, search, handleChange, filterItens }}>
+        <UserContext.Provider value={{ users, search, handleChange, filterItens, consultas }}>
             {children}
         </UserContext.Provider>
     )
