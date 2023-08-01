@@ -1,6 +1,7 @@
 const URL_API = 'http://localhost:3000'
 
 
+
 export async function LoginApi(email, password) {
   const response = await fetch(`${URL_API}/usuarios`);
   const usuarios = await response.json();
@@ -27,11 +28,11 @@ export async function RegisterApi(name, email, password) {
   });
 
   if (response.ok) {
-      const usuario = await response.json();
-      return usuario;
-    } else {
-        throw new Error('Error registering user.');
-    }
+    const usuario = await response.json();
+    return usuario;
+  } else {
+    throw new Error('Error registering user.');
+  }
 }
 
 
@@ -93,6 +94,28 @@ export async function PostPatient(
     throw new Error('Erro ao cadastrar usuário.');
   }
 }
+
+
+export async function PostConsulta(consultaData) {
+  
+ 
+  const response = await fetch(`${URL_API}/consultas`, {
+      method: 'POST',
+      headers: {
+        
+       
+  'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(consultaData),
+    });
+  
+    if (response.ok) {
+      const consulta = await response.json();
+      return consulta;
+    } else {
+      return null;
+    }
+  }
 
 
 

@@ -1,4 +1,3 @@
-
 import { useContext, useState } from "react";
 
 import { LoginContext } from "../../../Context/LoginContext";
@@ -8,12 +7,8 @@ import { FaUser } from 'react-icons/fa';
 
 import './ToolBar.css';
 
-
-function ToolBar() {
-  
+function ToolBar({ navbarText }) {
   const { logout, user } = useContext(LoginContext);
-
-
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
@@ -22,24 +17,18 @@ function ToolBar() {
   };
 
   const handleLogoutClick = () => {
-
     logout();
     navigate('/');
-
   };
 
   const formatNameToUpperCase = (name) => {
     return name.toUpperCase();
   };
 
-
-
-
   return (
-    
     <nav className="navbar bg-body-tertiary nav-main">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Navbar</a>
+        <p className="navbar-brand" href="#">{navbarText}</p>
         <div className="div-name"> 
           {user && user.name && <p className="p-name">Olá, {formatNameToUpperCase(user.name)}</p>}
           <ul className="nav nav-pills">
@@ -65,12 +54,8 @@ function ToolBar() {
           </ul>
         </div>
       </div>
-    
     </nav>   
-
-
   );
 }
 
 export default ToolBar;
-

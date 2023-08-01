@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PostPatient } from '../../Services/web';
 import './style.css'
@@ -27,8 +27,6 @@ function RegisterPatient() {
     const [pontoReferencia, setPontoReferencia] = useState('');
     const [isLoading, setIsLoanding] = useState(false)
     const navigate = useNavigate();
-    
-
 
 
     const handleNomeChange = (event) => {
@@ -153,7 +151,7 @@ function RegisterPatient() {
                 setTimeout(() => {
                     navigate('/home'); // Navega para a home após 2,5 segundos
                 }, 3000);
-              
+
             }
         } catch (error) {
             alert('Erro ao cadastrar usuário.');
@@ -205,17 +203,10 @@ function RegisterPatient() {
                         <button type="button" className="btn btn-danger me-2">
                             Deletar
                         </button>
-                        <button type="submit" className="btn btn-success" onClick={handleRegister}>
-                            Salvar
-                        </button>
+
 
                     </div>
                 </div>
-                {isLoading && (
-                    <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                )}              
 
                 <div className="col-md-8">
                     <label className="form-label">Nome</label>
@@ -313,6 +304,7 @@ function RegisterPatient() {
                         id="inputCep"
                         value={cep}
                         onChange={handleCepChange}
+                       
                     />
                 </div>
                 <div className="col-md-8">
@@ -385,6 +377,18 @@ function RegisterPatient() {
                         onChange={handlePontoReferenciaChange}
                     />
                 </div>
+                {isLoading ?
+                    (
+                        <div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    ) :
+                    <button type="submit" className="btn btn-success" onClick={handleRegister}>
+                        Salvar
+                    </button>
+                }
+
+
 
 
             </form>

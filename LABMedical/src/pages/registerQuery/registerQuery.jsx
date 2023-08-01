@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useContext } from 'react';
+import { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext'
-import { AiOutlineSearch } from 'react-icons/ai';
+// import { AiOutlineSearch } from 'react-icons/ai';
+import { PostConsulta } from "../../Services/web";
 import './style.css'
 
 
@@ -14,7 +15,12 @@ function RegisterQuery() {
   const [medicacaoReceitada, setMedicacaoReceitada] = useState('');
   const [dosagem, setDosagem] = useState('');
   const [precaucoes, setPrecaucoes] = useState('');
+  const [isLoading, setIsLoanding] = useState(false)
   const { search, handleChange, filterItens } = useContext(UserContext);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const navigate = useNavigate();
+
+
 
   const handleMotivoConsultaChange = (event) => {
     setMotivoConsulta(event.target.value);
@@ -44,12 +50,9 @@ function RegisterQuery() {
     setPrecaucoes(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSelectUser = (userId) => {
+    setSelectedUserId(userId);
 
-
-
-    // Limpar os campos após o envio
     setMotivoConsulta('');
     setDataConsulta('');
     setHoraConsulta('');
@@ -58,7 +61,56 @@ function RegisterQuery() {
     setDosagem('');
     setPrecaucoes('');
   };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
+    if (
+      !selectedUserId ||
+      !motivoConsulta ||
+      !dataConsulta ||
+      !horaConsulta ||
+      !problema ||
+      !medicacaoReceitada ||
+      !dosagem ||
+      !precaucoes
+    ) {
+
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
+
+    try {
+      const newConsulta = {
+        pacienteId: selectedUserId,
+        motivoConsulta,
+        dataConsulta,
+        horaConsulta,
+        problema,
+        medicacaoReceitada,
+        dosagem,
+        precaucoes,
+      };
+
+      setIsLoanding(true);
+
+      const consulta = await PostConsulta(newConsulta);
+
+      if (!consulta) {
+        alert('Erro ao cadastrar consulta.');
+      } else {
+        setIsLoanding(true);
+        alert('Cadastro realizado com sucesso!');
+        setTimeout(() => {
+          navigate('/home'); // Navega para a home após 2,5 segundos
+        }, 3000);
+      }
+    } catch (error) {
+
+
+      alert('Erro ao cadastrar consulta.');
+      setIsLoanding(false);
+    }
+  };
   return (
     <>
       <div >
@@ -67,6 +119,7 @@ function RegisterQuery() {
           <div className=" div-search1 mb-1">
             <div className="form-outline col-9 div-search2">
               <input type="text"
+                placeholder="Digite o nome do Paciente"
 
                 id="form1"
                 className="form-control "
@@ -74,33 +127,37 @@ function RegisterQuery() {
                 onChange={handleChange}
               />
             </div>
-            <AiOutlineSearch className="user-icon col-1 icon-search" />
+            {/* <AiOutlineSearch className="user-icon col-1 icon-search" /> */}
           </div>
         </div>
       </div>
+      <ul className="div-cards-user">
+        {filterItens.map((user) => (
+          <li key={user.id} onClick={() => handleSelectUser(user.id)}>
+            <span>{user.name}</span>
+          </li>
+        ))}
+      </ul>
 
       <div className=" form-query">
         <form className="" onSubmit={handleSubmit}>
           <div className="mb-3">
             <div>
               <div className="col-12 ">
-                <h3>Encontre o paciente</h3>
+                <h3>Consulta de </h3>
                 <button type="button" className="btn btn-primary me-2">
                   Editar
                 </button>
                 <button type="button" className="btn btn-danger me-2">
                   Deletar
                 </button>
-                <button type="submit" className="btn btn-success" >
-                  Salvar
-                </button>
 
               </div>
             </div>
-            
+
           </div>
           <div className="col-8">
-          <label className="form-label">Motivo da Consulta</label>
+            <label className="form-label">Motivo da Consulta</label>
             <input
               type="text"
               className="form-control"
@@ -170,7 +227,22 @@ function RegisterQuery() {
               rows="4"
               required
             />
-          </div>          
+          </div>
+          {isLoading ?
+            (
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            ) :
+            <button
+              type="submit"
+              className="btn btn-success"
+              onClick={handleSubmit}
+              disabled={!selectedUserId} // Desabilitar o botão quando selectedUserId é null
+            >
+              Salvar
+            </button>
+          }
         </form>
       </div>
     </>
@@ -178,3 +250,5 @@ function RegisterQuery() {
 }
 
 export default RegisterQuery;
+
+
