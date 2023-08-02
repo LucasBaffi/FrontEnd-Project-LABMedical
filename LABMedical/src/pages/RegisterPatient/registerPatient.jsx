@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { PostPatient } from '../../Services/web';
 import './style.css'
 
-// form-patient mx-auto
 function RegisterPatient() {
     const [name, setNome] = useState('');
     const [genero, setGenero] = useState('');
@@ -27,7 +26,6 @@ function RegisterPatient() {
     const [pontoReferencia, setPontoReferencia] = useState('');
     const [isLoading, setIsLoanding] = useState(false)
     const navigate = useNavigate();
-
 
     const handleNomeChange = (event) => {
         setNome(event.target.value);
@@ -109,16 +107,14 @@ function RegisterPatient() {
         setPontoReferencia(event.target.value);
     };
 
-
     const handleRegister = async (event) => {
         event.preventDefault()
-
-
-        if (!name || !genero || !dataNascimento || !cpf || !rg || !estadoCivil || !number || !email || !naturalidade || !convenio || !numeroCarteira || !validade || !cep || !cidade || !estado || !logradouro || !numero || !bairro || !pontoReferencia) {
+        if (!name || !genero || !dataNascimento || !cpf || !rg || !estadoCivil || !number || !email ||
+            !naturalidade || !convenio || !numeroCarteira || !validade || !cep || !cidade || !estado ||
+            !logradouro || !numero || !bairro || !pontoReferencia) {
             alert('Preencha todos os campos obrigatórios!');
             return;
         }
-
         try {
             const usuario = await PostPatient(
                 name,
@@ -151,15 +147,10 @@ function RegisterPatient() {
                 setTimeout(() => {
                     navigate('/home'); // Navega para a home após 2,5 segundos
                 }, 3000);
-
             }
         } catch (error) {
             alert('Erro ao cadastrar usuário.');
         }
-
-
-
-
 
         setNome('');
         setGenero('');
@@ -181,33 +172,34 @@ function RegisterPatient() {
         setComplemento('');
         setBairro('');
         setPontoReferencia('');
-
-
     }
+
+    const handleSearchCep = async () => {
+        try {
+          const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+          const data = await response.json();
+          console.log(data); // Adicione esta linha para verificar a resposta da API
+          if (data.erro) {
+            alert('CEP não encontrado');
+          } else {
+            setCidade(data.localidade);
+            setEstado(data.uf);
+            setBairro(data.bairro);
+          }
+        } catch (error) {
+          console.error(error); // Adicione esta linha para verificar possíveis erros na requisição
+          alert('Erro ao buscar CEP');
+        }
+      };
 
     return (
         <>
-
-
-
-
             <h3>Preencha os dados para cadastrar</h3>
             <form className="form-patient mx-auto">
                 <div className='div-button-register '>
-                    <h4>Identificação</h4>
-
-                    <div className="col-12 d-flex justify-content-end">
-                        <button type="button" className="btn btn-primary me-2">
-                            Editar
-                        </button>
-                        <button type="button" className="btn btn-danger me-2">
-                            Deletar
-                        </button>
-
-
-                    </div>
+                    <h4>Cadastro de Paciente</h4>
+                   
                 </div>
-
                 <div className="col-md-8">
                     <label className="form-label">Nome</label>
                     <input type="text" className="form-control" id="inputNome" value={name}
@@ -298,14 +290,22 @@ function RegisterPatient() {
                 <h4>Dados de endereço</h4>
                 <div className="col-md-8">
                     <label className="form-label">CEP</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="inputCep"
-                        value={cep}
-                        onChange={handleCepChange}
-                       
-                    />
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="inputCep"
+                            value={cep}
+                            onChange={handleCepChange}
+                        />
+                        <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick={handleSearchCep}
+                        >
+                            Buscar CEP
+                        </button>
+                    </div>
                 </div>
                 <div className="col-md-8">
                     <label className="form-label">Cidade</label>
@@ -387,17 +387,8 @@ function RegisterPatient() {
                         Salvar
                     </button>
                 }
-
-
-
-
             </form>
-
-
-
         </>
     )
 }
-
-
 export default RegisterPatient;

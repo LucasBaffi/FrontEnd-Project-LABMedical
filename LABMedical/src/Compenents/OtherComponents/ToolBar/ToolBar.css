@@ -1,6 +1,8 @@
 .div-name{
    display: flex;
    align-items: baseline; 
+   justify-content: space-between;
+    width: 100%;
   
 }
 
@@ -23,6 +25,7 @@ font-size: 14px;
 
    .div-name{
       gap: 30px;
+         
    }
 
   

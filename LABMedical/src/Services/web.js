@@ -95,6 +95,26 @@ export async function PostPatient(
   }
 }
 
+export async function deletePatient(patientId) {
+  const response = await fetch(`${URL_API}/pacientes/${patientId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+  
+    return patientId;
+  } else {
+    throw new Error('Erro ao excluir paciente.');
+  }
+}
+
+
+
+
+
+
+
+
 
 export async function PostConsulta(consultaData) {
   

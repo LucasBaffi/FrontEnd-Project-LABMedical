@@ -17,6 +17,8 @@ import RegisterQuery from './pages/registerQuery/registerQuery';
 import RegisterExam from './pages/RegisterExam/RegisterExam';
 import './App.css';
 
+
+
 function App() {
   const {loginOn } = useContext(LoginContext);
 
@@ -51,7 +53,9 @@ function App() {
                     <Route path="/registerPatient" element={<RegisterPatient />} />
                     <Route path="/recordListing" element={<RecordListing />} />
                     <Route path="/registerquery" element={<RegisterQuery />} />
-                    <Route path="/registerexam" element={<RegisterExam />} />                    
+                    <Route path="/registerexam" element={<RegisterExam />} />   
+                   
+                                 
                   </Routes>
                 </div>
               </div>

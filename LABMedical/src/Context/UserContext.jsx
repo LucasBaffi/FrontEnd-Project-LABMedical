@@ -10,7 +10,27 @@ export const UserProvider = ({ children }) => {
     const [consultas, setConsultas] = useState([])
     const [exames, setExames] = useState([])
     const [search, setSearch] = useState('')
+    const [pacientes, setPacientes] = useState([])
     const [filterItens, setFilterItens] = useState(users)
+
+    const handleDelete = (userId) => {
+      
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+    };
+
+    useEffect(() => {
+      const fetchPacientes = async () => {
+        try {
+          const response = await fetch(`${URL_API}/pacientes`);
+          const usuarios = await response.json();
+          setPacientes(usuarios);
+        } catch (error) {
+          console.error('Erro ao buscar os usuários:', error);
+        }
+      };
+  
+      fetchPacientes();
+    }, []);
 
 
   useEffect(() => {
@@ -84,7 +104,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ users, search, handleChange, filterItens, consultas,exames }}>
+        <UserContext.Provider value={{ users, search, handleChange, filterItens, consultas,exames, handleDelete, pacientes}}>
             {children}
         </UserContext.Provider>
     )

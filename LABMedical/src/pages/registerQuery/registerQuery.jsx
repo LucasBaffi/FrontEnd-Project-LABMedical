@@ -16,7 +16,7 @@ function RegisterQuery() {
   const [dosagem, setDosagem] = useState('');
   const [precaucoes, setPrecaucoes] = useState('');
   const [isLoading, setIsLoanding] = useState(false)
-  const { search, handleChange, filterItens, users } = useContext(UserContext);
+  const { search, handleChange, filterItens} = useContext(UserContext);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const navigate = useNavigate();
 

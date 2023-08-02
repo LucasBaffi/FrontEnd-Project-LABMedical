@@ -1,11 +1,15 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 import { PiUserCircleFill } from 'react-icons/pi';
-import { useContext, } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { HiUserGroup } from 'react-icons/hi'
 import { LiaBookMedicalSolid } from 'react-icons/lia'
 import { BsFileEarmarkMedicalFill } from 'react-icons/bs'
+import PatientDetails from '../../Compenents/HomeComponents/PtientDetails/PatientDetails';
 import CardInfo from '../../Compenents/HomeComponents/CardIndo/CardInfo';
+import { Modal } from 'react-bootstrap';
+
+
 
 import './Home.css'
 
@@ -13,9 +17,29 @@ import './Home.css'
 
 function Home() {
     const { search, handleChange, filterItens, users, consultas, exames } = useContext(UserContext);
+    const [selectedPatient, setSelectedPatient] = useState(null);
+    const modalRef = useRef(null);
+
+
+    useEffect(() => {
+     
+        if (modalRef.current) {
+            new Modal(modalRef.current);
+        }
+    }, []);
+
+    useEffect(() => {
+        
+    }, [selectedPatient]);
+
 
     const formatNameToUpperCase = (user) => {
         return user.toUpperCase();
+
+    };
+    const handleShowDetails = (patient) => {
+        
+        setSelectedPatient(patient);
     };
 
     return (
@@ -41,7 +65,7 @@ function Home() {
                                 <div className="col ">
 
 
-                                    <CardInfo titulo={'Consultas'} valor={consultas.length}  IconComponent={LiaBookMedicalSolid} />
+                                    <CardInfo titulo={'Consultas'} valor={consultas.length} IconComponent={LiaBookMedicalSolid} />
 
                                 </div>
                             </div>
@@ -76,19 +100,33 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <ul className=" div-cards-user">
-                        {filterItens.map((users) =>
-                        (<li key={users.id} className=" info-user with-background " >
-                            <PiUserCircleFill className="user-icon col-4 icon-search" />
-                            <span>{formatNameToUpperCase(users.name)}</span>
-                            <span>{users.age} anos</span>
-                            <span>{users.number}</span>
-                            <span>{users.convenio}</span>
-
-                        </li>)
-                        )}
+                    <ul className="div-cards-user">
+                        {filterItens.map((user) => (
+                            <li key={user.id} className="info-user with-background">
+                                <PiUserCircleFill className="user-icon col-4 icon-search" />
+                                <span>{formatNameToUpperCase(user.name)}</span>
+                                <span>{user.age} anos</span>
+                                <span>{user.number}</span>
+                                <span>{user.convenio}</span>
+                                <button className='btn btn-secondary' onClick={() => handleShowDetails(user)}>Ver mais</button>
+                            </li>
+                        ))}
                     </ul>
-
+                    <Modal show={selectedPatient !== null} onHide={() => setSelectedPatient(null)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Informações do paciente</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {selectedPatient && (
+                                <PatientDetails
+                                    patient={selectedPatient}
+                                    consultations={consultas.filter((consulta) => consulta.pacienteId === selectedPatient.id)}
+                                    exams={exames.filter((exame) => exame.pacienteId === selectedPatient.id)}
+                                />
+                            )}
+                        </Modal.Body>
+                        
+                    </Modal>
                 </div>
             </div>
 
