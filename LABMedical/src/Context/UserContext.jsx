@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
 
     const [users, setUsers] = useState([]);
     const [consultas, setConsultas] = useState([])
+    const [exames, setExames] = useState([])
     const [search, setSearch] = useState('')
     const [filterItens, setFilterItens] = useState(users)
 
@@ -43,6 +44,23 @@ export const UserProvider = ({ children }) => {
         }
         fecthConsul()
     }, []);
+
+    useEffect(() => {
+
+        const fechtExames = async () => {
+
+            try {
+                const response = await fetch(`${URL_API}/exames`);
+                const consultas = await response.json();
+                setExames(consultas);
+            } catch (error) {
+                console.error('Erro ao buscar os usuários:', error);
+            }
+
+        }
+        fechtExames()
+    }, []);
+
 
 
 
