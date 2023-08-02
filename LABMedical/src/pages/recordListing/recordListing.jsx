@@ -1,11 +1,25 @@
 import { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext'
+import { deletePatient } from '../../Services/web';
+
 import { AiOutlineSearch } from 'react-icons/ai';
 import './style.css'
 
 
 function RecordListing() {
     const { search, handleChange, filterItens } = useContext(UserContext);
+    
+    const handleDelete = async (userId) => {
+        try {
+          await deletePatient(userId);
+          // Se a exclusão for bem-sucedida, você pode atualizar a lista de pacientes ou recarregar os dados, conforme necessário.
+          // Por exemplo, se você estiver usando useState para manter a lista de usuários:
+          // setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+          alert('Paciente excluído com sucesso!');
+        } catch (error) {
+         alert('Erro ao excluir o paciente:', error);
+        }
+      };
 
     return (
         <>
@@ -27,7 +41,7 @@ function RecordListing() {
                 </div>
             </div>
 
-            <table className="table form-listing">
+            <table className="table table-bordered table-striped mx-auto table-width ">
 
                 <thead>
                     <tr>
@@ -40,9 +54,11 @@ function RecordListing() {
                 <tbody>
                     {filterItens.map((user) => (
                         <tr key={user.id}>
-                            <th scope="row">{user.id}</th>
+                            <th scope="row" className='d-flex justify-content-between'>{user.id}<button className=" btn btn-primary" onClick={() => handleDelete(user.id)}>Excluir </button></th>
                             <td>{user.name}</td>
                             <td>{user.convenio}</td>
+                            
+
 
                         </tr>
                     ))}

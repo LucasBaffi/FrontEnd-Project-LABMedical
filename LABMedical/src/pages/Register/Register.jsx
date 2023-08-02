@@ -13,6 +13,7 @@ const Register = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setIsLoanding] = useState(false)
   const navigate = useNavigate();
 
 
@@ -61,8 +62,11 @@ const Register = ({ onClose }) => {
     if (!usuario) {
       alert('Error registering user.');
     }
+    setIsLoanding(true);
     alert(`Your count registered successfully`)
-    navigate('/')
+    setTimeout(() => {
+      navigate('/'); // 
+    }, 3000);
 
 
     // Clearing form fields
@@ -90,6 +94,7 @@ const Register = ({ onClose }) => {
       </div>
       <form className='form-modal'>
         <h4>Personal data</h4>
+
         <label htmlFor='name'>Name:</label>
         <input id='name' className='form-control' value={name} onChange={handleNameChange} aria-label='Username' />
 
@@ -101,10 +106,17 @@ const Register = ({ onClose }) => {
 
         <label htmlFor='confirmPassword'>Password confirmation:</label>
         <input id='confirmPassword' className='form-control' value={confirmPassword} onChange={handleConfirmPasswordChange} aria-label='Confirm Password' type='password' />
+        {isLoading ?
+          (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) :
+          <button type="submit" className='btn btn-primary button-send form-control' onClick={handleRegister}>
+            Salvar
+          </button>
+        }
 
-        <button type='submit' onClick={handleRegister} className='btn btn-primary button-send form-control'>
-          Send
-        </button>
       </form>
     </Modal>
   );

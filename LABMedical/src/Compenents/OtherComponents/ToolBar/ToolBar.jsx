@@ -28,7 +28,7 @@ function ToolBar({ navbarText }) {
   return (
     <nav className="navbar bg-body-tertiary nav-main">
       <div className="container-fluid">
-        <p className="navbar-brand" href="#">{navbarText}</p>
+       
         <div className="div-name"> 
           {user && user.name && <p className="p-name">Olá, {formatNameToUpperCase(user.name)}</p>}
           <ul className="nav nav-pills">

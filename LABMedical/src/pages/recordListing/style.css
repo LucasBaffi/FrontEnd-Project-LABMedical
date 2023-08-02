@@ -1,11 +1,30 @@
-.form-listing{
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 0 0 1em rgb(14, 14, 14);
-    padding: 10px;
-    
-}
+.table thead th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+  }
+  
 
-tr{
-    box-shadow: 0 0 1em rgb(14, 14, 14);
-}
+  .table tbody td {
+    text-align: center;
+  }
+  
+
+  .btn-excluir {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-excluir:hover {
+    background-color: #c82333;
+  }
+  
+
+  .icon-search {
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }
+  
+  .table-width{
+    width: 80%;
+  }
