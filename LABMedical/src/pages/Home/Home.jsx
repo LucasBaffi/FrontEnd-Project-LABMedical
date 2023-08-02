@@ -13,7 +13,7 @@ import './Home.css'
 
 
 function Home() {
-    const { search, handleChange, filterItens, users, consultas } = useContext(UserContext);
+    const { search, handleChange, filterItens, users, consultas, exames } = useContext(UserContext);
 
     const formatNameToUpperCase = (user) => {
         return user.toUpperCase();
@@ -44,7 +44,7 @@ function Home() {
                         <div className=" div-cards-info d-flex align-items-center justify-content-center gap-3 w-80">
                             <div className=" div-info-estatistica" >
                                 <div className="col ">
-                                    <CardInfo titulo={'Exames'} valor={filterItens.length} IconComponent={BsFileEarmarkMedicalFill} />
+                                    <CardInfo titulo={'Exames'} valor={exames.length} IconComponent={BsFileEarmarkMedicalFill} />
                                 </div>
                             </div>
                         </div>
