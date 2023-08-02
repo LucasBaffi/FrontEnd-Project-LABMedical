@@ -1,17 +1,18 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 import { PiUserCircleFill } from 'react-icons/pi';
-import { useContext } from "react";
+import { useContext, } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { HiUserGroup } from 'react-icons/hi'
 import { LiaBookMedicalSolid } from 'react-icons/lia'
 import { BsFileEarmarkMedicalFill } from 'react-icons/bs'
 import CardInfo from '../../Compenents/HomeComponents/CardIndo/CardInfo';
+
 import './Home.css'
 
 
 
 function Home() {
-    const { search, handleChange, filterItens } = useContext(UserContext);
+    const { search, handleChange, filterItens, users, consultas, exames } = useContext(UserContext);
 
     const formatNameToUpperCase = (user) => {
         return user.toUpperCase();
@@ -19,28 +20,36 @@ function Home() {
 
     return (
         <>
+
             <div >
                 <div >
+
                     <h3 className="mt-3">Estatisticas do sistema</h3>
                     <div className="cards-user ">
                         <div className=" div-cards-info d-flex align-items-center justify-content-center gap-3 w-80">
                             <div className=" div-info-estatistica" >
                                 <div className="col ">
-                                    <CardInfo titulo={'Pacientes'} valor={filterItens.length} IconComponent={HiUserGroup} />
+
+
+                                    <CardInfo titulo={'Pacientes'} valor={users.length} IconComponent={HiUserGroup} />
+
                                 </div>
                             </div>
                         </div>
                         <div className=" div-cards-info d-flex align-items-center justify-content-center gap-3 w-80">
                             <div className=" div-info-estatistica" >
                                 <div className="col ">
-                                    <CardInfo titulo={'Consultas'} valor={filterItens.length} IconComponent={LiaBookMedicalSolid} />
+
+
+                                    <CardInfo titulo={'Consultas'} valor={consultas.length}  IconComponent={LiaBookMedicalSolid} />
+
                                 </div>
                             </div>
                         </div>
                         <div className=" div-cards-info d-flex align-items-center justify-content-center gap-3 w-80">
                             <div className=" div-info-estatistica" >
                                 <div className="col ">
-                                    <CardInfo titulo={'Exames'} valor={filterItens.length} IconComponent={BsFileEarmarkMedicalFill} />
+                                    <CardInfo titulo={'Exames'} valor={exames.length} IconComponent={BsFileEarmarkMedicalFill} />
                                 </div>
                             </div>
                         </div>

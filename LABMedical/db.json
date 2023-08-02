@@ -97,5 +97,27 @@
       "precaucoes": "repousar, evitar produtos gelados ",
       "id": 1
     }
+  ],
+  "exames": [
+    {
+      "pacienteId": "aYX2qbU",
+      "nomeExame": "coleta de sangue",
+      "dataExame": "2023-08-02",
+      "horaExame": "14:30",
+      "tipoExame": "sanguinio",
+      "laboratorio": "unimed",
+      "resultados": "sem alteraçoes",
+      "id": 1
+    },
+    {
+      "pacienteId": "v8ts4Ko",
+      "nomeExame": "raio x",
+      "dataExame": "2023-08-22",
+      "horaExame": "14:20",
+      "tipoExame": "ossea",
+      "laboratorio": "unimed",
+      "resultados": "esperando",
+      "id": 2
+    }
   ]
 }

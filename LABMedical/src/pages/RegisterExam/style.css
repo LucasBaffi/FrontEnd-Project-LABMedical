@@ -1,0 +1,13 @@
+
+.selected {
+    background-color: green;
+    color: white; /* Opcional, para mudar a cor do texto quando selecionado */
+  }
+
+  .btn-selected {
+    background-color: green; /* Cor de fundo quando selecionado */
+    color: white; /* Cor do texto quando selecionado */
+    font-weight: bold; /* Texto em negrito quando selecionado */
+  }
+  
+  

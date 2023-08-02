@@ -16,9 +16,11 @@ function RegisterQuery() {
   const [dosagem, setDosagem] = useState('');
   const [precaucoes, setPrecaucoes] = useState('');
   const [isLoading, setIsLoanding] = useState(false)
-  const { search, handleChange, filterItens } = useContext(UserContext);
+  const { search, handleChange, filterItens, users } = useContext(UserContext);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const navigate = useNavigate();
+
+  const selectedPatient = filterItens.find((user) => user.id === selectedUserId);
 
 
 
@@ -52,7 +54,6 @@ function RegisterQuery() {
 
   const handleSelectUser = (userId) => {
     setSelectedUserId(userId);
-
     setMotivoConsulta('');
     setDataConsulta('');
     setHoraConsulta('');
@@ -99,9 +100,9 @@ function RegisterQuery() {
         alert('Erro ao cadastrar consulta.');
       } else {
         setIsLoanding(true);
-        alert('Cadastro realizado com sucesso!');
+        alert('Consulta realizada com sucesso!');
         setTimeout(() => {
-          navigate('/home'); // Navega para a home após 2,5 segundos
+          navigate('/home'); 
         }, 3000);
       }
     } catch (error) {
@@ -133,9 +134,9 @@ function RegisterQuery() {
       </div>
       <ul className="div-cards-user">
         {filterItens.map((user) => (
-          <li key={user.id} onClick={() => handleSelectUser(user.id)}>
-            <span>{user.name}</span>
-          </li>
+          <button className=" btn btn-outline-secondary" key={user.id} onClick={() => handleSelectUser(user.id)}>
+            <span>{user.name.toUpperCase()}</span>
+          </button>
         ))}
       </ul>
 
@@ -144,7 +145,7 @@ function RegisterQuery() {
           <div className="mb-3">
             <div>
               <div className="col-12 ">
-                <h3>Consulta de </h3>
+                <h3>Consulta de {selectedPatient ? selectedPatient.name.toUpperCase() : ""}</h3>
                 <button type="button" className="btn btn-primary me-2">
                   Editar
                 </button>

@@ -117,6 +117,27 @@ export async function PostConsulta(consultaData) {
     }
   }
 
+  export async function PostExam(consultaData) {
+  
+ 
+    const response = await fetch(`${URL_API}/exames`, {
+        method: 'POST',
+        headers: {
+          
+         
+    'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(consultaData),
+      });
+    
+      if (response.ok) {
+        const consulta = await response.json();
+        return consulta;
+      } else {
+        return null;
+      }
+    }
+
 
 
 
