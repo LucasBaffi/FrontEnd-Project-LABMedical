@@ -14,6 +14,7 @@ import ToolBar from './Compenents/OtherComponents/ToolBar/ToolBar';
 import SideBar from './Compenents/OtherComponents/SideBar/SideBar';
 import RecordListing from './pages/recordListing/recordListing';
 import RegisterQuery from './pages/registerQuery/registerQuery';
+import RegisterExam from './pages/RegisterExam/RegisterExam';
 import './App.css';
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/registerPatient" element={<RegisterPatient />} />
                     <Route path="/recordListing" element={<RecordListing />} />
                     <Route path="/registerquery" element={<RegisterQuery />} />
+                    <Route path="/registerexam" element={<RegisterExam />} />                    
                   </Routes>
                 </div>
               </div>
